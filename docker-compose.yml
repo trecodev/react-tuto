@@ -1,0 +1,15 @@
+version: "2"
+
+services:
+    webapp:
+        container_name: webapp
+        build: ./webapp
+    nginx:
+        container_name: nginx
+        build: ./nginx
+        ports:
+            - "8080:80"
+        volumes_from:
+            - webapp
+        depends_on:
+            - webapp
